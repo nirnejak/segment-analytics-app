@@ -1,23 +1,25 @@
+import { PrismaClient } from "@prisma/client"
+
 import { Request, Response } from "express"
 
-import IUser from "../interfaces/user.interface"
+const prisma = new PrismaClient()
 
 /**
- * @route GET /api/users
+ * @route GET /api/user
  * @access Public
  * @param req Request Object
  * @param res Response Object
  * @description Get Users
  */
-const getUsers = (req: Request, res: Response) => {
-  const users: IUser[] = [
-    {
-      name: "Jitendra",
-      email: "jeetnirnejak@gmail.com",
-      contact: "7869290297",
+const getUsers = async (req: Request, res: Response) => {
+  const owners = await prisma.owners.findMany({
+    where: {
+      email: {
+        contains: ".com",
+      },
     },
-  ]
-  res.json({ users })
+  })
+  res.json({ users: owners })
 }
 
 export default {
