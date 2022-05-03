@@ -1,6 +1,6 @@
-# Typescript Node Starter
+# Segment Analytics App
 
-Node.js and express project starter using TypeScript
+Segment Analytics App, Pulls customer analytics data from Segement.io and analyzes it.
 
 > Note: Need to configure `.env` file to use local server
 
